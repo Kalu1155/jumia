@@ -7,6 +7,9 @@ import Sponsored from '../Components/Sponsored'
 import Sponsored2 from '../Components/Sponsored2'
 import Sponsored3 from '../Components/Sponsored3'
 import PromoSection from '../Components/PromoSection'
+import JumiaFooter from '../Components/JumiaFooter'
+import Footer from '../Components/Footer'
+import JumiaCard from '../Components/JumiaCard'
 
 export const Home = () => {
   return (
@@ -19,6 +22,9 @@ export const Home = () => {
     <Sponsored2/>
     <Sponsored3/>
     <PromoSection/>
+    <JumiaCard/>
+    <JumiaFooter/>
+    <Footer/>
     </>
   )
 }
