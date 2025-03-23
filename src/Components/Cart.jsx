@@ -1,13 +1,32 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
-
+    const [product, setProduct] = useState([])
     const [cart, setCart] = useState([]); // State to store cart items
     const [isCartVisible, setIsCartVisible] = useState(false); // State to manage cart visibility
      useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
       }, [cart]);
+
+      const admin = JSON.stringify(localStorage.getItem('admin'))
+      const id = admin.id
+    
+      useEffect(() => {
+        const fetchProduct = async () => {
+          try {
+            const response = await axios.get(
+              `http://ecommerce.reworkstaging.name.ng/v2/products/${id}`
+            );
+            setProduct(response.data);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        };
+    
+        fetchProduct();
+      }, []);
     
       // Add product to cart
       const handleAddToCart = () => {
@@ -84,6 +103,9 @@ const Cart = () => {
         setIsCartVisible(!isCartVisible); // Toggle cart visibility
       };
     
+      if (!product) {
+        return <h2 className="text-center mt-10">No product saved.</h2>;
+      }
   return (
     <div>
           {/* Cart Modal */}

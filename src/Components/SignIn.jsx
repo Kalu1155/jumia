@@ -31,6 +31,7 @@ const SignIn = () => {
         toast.success("Login Successful!");
         console.log(res)
         navigate("/");
+        localStorage.setItem('userData', res.data)
       } else {
         setError("Invalid email or password");
       }

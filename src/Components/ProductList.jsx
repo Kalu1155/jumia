@@ -61,12 +61,11 @@ const ProductList = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
-          <Link to={`/saved-product/${product.id}`}>
+          <Link to={`/saved-product/${product.id}`} key={product.id}>
               <div
-                key={product.id}
                 className="border p-4 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:scale-105 relative"
-                // onMouseEnter={() => setHoveredProductId(product.id)}
-                // onMouseLeave={() => setHoveredProductId(null)}
+                onMouseEnter={() => setHoveredProductId(product.id)}
+                onMouseLeave={() => setHoveredProductId(null)}
               >
                 <div className="relative">
                   <img
@@ -81,11 +80,13 @@ const ProductList = () => {
                 <p className="text-yellow-500">⭐⭐⭐⭐⭐</p>
                 {product.express && <p className="text-xs text-red-500">JUMIA EXPRESS</p>}
                 <div className="mt-9">
-                  {hoveredProductId === product.id && (
-                    <button className="absolute bottom-0 left-0 right-0 bg-[#f68b1e] text-white py-2 rounded-b-lg">
-                      Buy Now
-                    </button>
-                  )}
+                  <button 
+                    className={`absolute bottom-0 left-0 right-0 bg-[#f68b1e] text-white py-2 rounded-b-lg transition-opacity duration-300 ${
+                      hoveredProductId === product.id ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    Buy Now
+                  </button>
                 </div>
               </div>
           </Link>

@@ -14,6 +14,7 @@ import User from './dashboard/pages/User';
 import Productpage from './dashboard/pages/Productpage';
 import CategoriesPage from './dashboard/pages/CategoriesPage';
 import ProductSuccess from './dashboard/pages/ProductSuccess';
+import Cart from './Components/Cart';
 
 
 
@@ -27,7 +28,7 @@ export const App = () => {
         <Route path="/register" element={<CreateAccount/>} />
         <Route path="/signin" element={<SignIn/>} />
         <Route path="/hello" element={<HelloPage />} />
-        <Route path="/cart" element={<CartPage/>} />
+        <Route path="/cart" element={<Cart/>} />
         <Route path="/saved-product/:id" element={<SavedProductPage/>} />  
         <Route path="/Adminsignin" element={<SignUp/>} />  
         <Route path="/Adminlogin" element={<Login/>} /> 
@@ -36,7 +37,6 @@ export const App = () => {
         <Route path='/Product' element={<Productpage/>}/>
         <Route path='/CategoriesPage' element={<CategoriesPage/>}/>
         <Route path='/ProductSuccess' element={<ProductSuccess/>}/>
-        
       </Routes>
     </Router>
   )
